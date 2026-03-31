@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0107)file:///C:/Users/anne/Downloads/%E5%93%A1%E5%B7%A5%E6%97%85%E9%81%8A%E8%AA%BF%E6%9F%A5%E8%A1%A8_2026_7.html -->
+<html lang="zh-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 年員工旅遊意向調查表</title>
 <style>
@@ -13,7 +13,7 @@
   .page-header{text-align:center;padding:2rem 1.5rem 1.75rem;background:#fff;border-radius:16px;margin-bottom:1.75rem;border:1px solid #ddd;}
   .page-header h1{font-size:30px;font-weight:700;color:#1a1a1a;margin-bottom:0.5rem;}
   .page-header .company{font-size:18px;color:#555;margin-bottom:0.9rem;}
-  .deadline{display:inline-block;background:#FAECE7;color:#993C1D;font-size:17px;font-weight:600;padding:7px 20px;border-radius:8px;}
+  .deadline{display:inline-block;background:#FAECE7;color:#993C1D;font-size:22px;font-weight:700;padding:10px 26px;border-radius:8px;}
 
   /* 區塊通用 */
   .section{background:#fff;border:1px solid #ddd;border-radius:14px;margin-bottom:1.75rem;overflow:hidden;}
@@ -78,7 +78,7 @@
   .trip-card.selected .check-box{display:none;}
   .tc-title{font-size:22px;font-weight:700;color:#1a1a1a;flex:1;}
   .trip-card.selected .tc-title{color:#78350f;}
-  .tc-duration{font-size:15px;color:#6b7280;background:#f3f4f6;padding:4px 13px;border-radius:7px;white-space:nowrap;font-weight:500;}
+  .tc-duration{display:none;}
 
   .sel-badge{display:none;align-items:center;gap:0.6rem;padding:0.65rem 1.4rem;background:#f59e0b;color:#fff;font-size:18px;font-weight:700;border-bottom:1px solid #fbbf24;}
   .trip-card.selected .sel-badge{display:flex;}
@@ -94,7 +94,7 @@
   .pr-lbl{font-size:13px;color:#6b7280;margin-bottom:3px;}
   .pr-val{font-size:19px;font-weight:700;color:#1d4ed8;}
 
-  .notice{font-size:14px;color:#6b7280;padding:0.6rem 1rem;background:#f9fafb;border-radius:8px;border-left:3px solid #d1d5db;line-height:1.7;}
+  .notice{display:none;}
   .trip-card.selected .notice{background:rgba(255,255,255,0.6);border-left-color:#f59e0b;color:#78350f;}
   .trip-card.selected .tc-date{color:#78350f;}
   .trip-card.selected .chip{background:rgba(255,255,255,0.6);color:#78350f;border-color:#f59e0b;}
@@ -150,7 +150,7 @@
   <div class="page-header">
     <h1>🏖️ 2026 年員工旅遊意向調查</h1>
     <p class="company">超尊科技股份有限公司　管理部</p>
-    <div class="deadline">⏰ 請於收到後 3 天內完成填寫並回傳</div>
+    <div class="deadline">⏰ 請於 4/10（五）下班前完成填寫並回傳</div>
   </div>
 
   <!-- 第1部分：旅遊資訊說明 -->
@@ -161,8 +161,9 @@
     </div>
     <div class="sec-body">
       <ul class="info-list">
-        <li>2026 年員工旅遊預計於 <strong>2026 年 9 至 11 月</strong> 期間舉行，確切出發日期將於確認後另行公布並進行時間調查。</li>
+        <li>2026 年員工旅遊預計於 <strong>2026 年 9 至 11 月</strong> 期間舉行，確切出發日期將於確認後另行公布。</li>
         <li>本次提供之報價，將依實際出團人數及當時情況保有合理調整空間，最終費用以旅行社正式報價為準。</li>
+        <li><strong>國內行程</strong>規劃 3 天（週四出發、週六返回）；<strong>國外行程</strong>規劃 5 天（週三出發、週日返回，含週六、週日）。</li>
       </ul>
       <div class="info-note">📋 本調查結果僅作為管理部規劃參考，不代表最終確認報名。</div>
     </div>
@@ -209,14 +210,14 @@
     </div>
     <div class="sec-body">
       <div class="intent-group">
-        <div class="intent-btn" id="btn-no" onclick="setIntent('no')">
+        <div class="intent-btn" id="btn-no" onclick="setIntent(&#39;no&#39;)">
           <div class="intent-radio"><div class="intent-radio-dot"></div></div>
           <div>
             <div class="intent-label">無參加意願 — 希望延至 2027 年舉行</div>
             <div class="intent-desc">選擇此項後可直接送出表單</div>
           </div>
         </div>
-        <div class="intent-btn" id="btn-yes" onclick="setIntent('yes')">
+        <div class="intent-btn" id="btn-yes" onclick="setIntent(&#39;yes&#39;)">
           <div class="intent-radio"><div class="intent-radio-dot"></div></div>
           <div>
             <div class="intent-label">有參加意願 — 請選擇一個行程</div>
@@ -244,7 +245,31 @@
             <span class="rtitle">國內行程</span>
             <span class="rsub">國內</span>
           </div>
-          <div id="dom-trips"></div>
+          <div id="dom-trips"><div class="trip-card" data-id="d1" onclick="selectTrip(&#39;d1&#39;)">
+    <div class="tc-head">
+      <div class="check-box">✓</div>
+      <div class="tc-title">台南・小琉球 3 日遊</div>
+
+    </div>
+    <div class="sel-badge">✅ 已選擇此行程</div>
+    <div class="tc-body">
+      <div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:6px;">✨ 行程亮點</div>
+      <div class="info-chips"><span class="chip">🏛️ 故宮南院</span><span class="chip">🚂 五分車尋蜜號</span><span class="chip">🍬 蒜頭糖廠</span><span class="chip">🌙 花園夜市</span><span class="chip">🤿 小琉球浮潛／玻璃船</span><span class="chip">🏨 海景 VILLA 住宿</span><span class="chip">🚄 高鐵左營往返</span></div>
+      <div class="price-row"><div class="price-box"><div class="pr-lbl">雙人房（每人）</div><div class="pr-val">11,620 元</div></div><div class="price-box"><div class="pr-lbl">四人房（每人）</div><div class="pr-val">10,720 元</div></div></div>
+    </div>
+  </div><div class="trip-card" data-id="d2" onclick="selectTrip(&#39;d2&#39;)">
+    <div class="tc-head">
+      <div class="check-box">✓</div>
+      <div class="tc-title">馬祖 3 日遊</div>
+
+    </div>
+    <div class="sel-badge">✅ 已選擇此行程</div>
+    <div class="tc-body">
+      <div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:6px;">✨ 行程亮點</div>
+      <div class="info-chips"><span class="chip">🍶 馬祖酒廠・八八坑道</span><span class="chip">⛩️ 媽祖巨神像</span><span class="chip">✨ 北海坑道夜間搖櫓藍眼淚</span><span class="chip">💙 藍眼淚體驗館</span><span class="chip">☕ 芹壁閩東古厝下午茶</span><span class="chip">✈️ 松山機場直飛</span></div>
+      <div class="price-row"><div class="price-box"><div class="pr-lbl">成人 平日（每人）</div><div class="pr-val">13,850 元</div></div><div class="price-box"><div class="pr-lbl">成人 假日（每人）</div><div class="pr-val">14,700 元</div></div><div class="price-box"><div class="pr-lbl">65歲以上／愛心 平日</div><div class="pr-val">12,150 元</div></div><div class="price-box"><div class="pr-lbl">65歲以上／愛心 假日</div><div class="pr-val">13,050 元</div></div></div>
+    </div>
+  </div></div>
         </div>
 
         <!-- 國外 -->
@@ -254,7 +279,31 @@
             <span class="rtitle">國外行程</span>
             <span class="rsub">國外</span>
           </div>
-          <div id="int-trips"></div>
+          <div id="int-trips"><div class="trip-card" data-id="i1" onclick="selectTrip(&#39;i1&#39;)">
+    <div class="tc-head">
+      <div class="check-box">✓</div>
+      <div class="tc-title">馬來西亞 5 日遊</div>
+
+    </div>
+    <div class="sel-badge">✅ 已選擇此行程</div>
+    <div class="tc-body">
+      <div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:6px;">✨ 行程亮點</div>
+      <div class="info-chips"><span class="chip">🏊 海上泳池 VILLA 入住</span><span class="chip">🛺 馬六甲世界遺產・三輪車遊古城</span><span class="chip">⛵ 馬六甲河遊船</span><span class="chip">🌈 黑風洞彩虹階梯</span><span class="chip">🏙️ 雙子星花園廣場（外觀）</span><span class="chip">🛍️ Lalaport 購物中心・亞羅街夜市</span><span class="chip">🕌 粉紅清真寺・三井名牌城</span></div>
+      <div class="price-row"><div class="price-box"><div class="pr-lbl">成人現金優惠價（每人）</div><div class="pr-val">23,500 元</div></div><div class="price-box"><div class="pr-lbl">成人定價（每人）</div><div class="pr-val">24,000 元</div></div><div class="price-box"><div class="pr-lbl">小孩不佔床</div><div class="pr-val">-1,000 元</div></div><div class="price-box"><div class="pr-lbl">單人房差</div><div class="pr-val">+6,600 元</div></div></div>
+    </div>
+  </div><div class="trip-card" data-id="i2" onclick="selectTrip(&#39;i2&#39;)">
+    <div class="tc-head">
+      <div class="check-box">✓</div>
+      <div class="tc-title">北越 5 日遊</div>
+
+    </div>
+    <div class="sel-badge">✅ 已選擇此行程</div>
+    <div class="tc-body">
+      <div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:6px;">✨ 行程亮點</div>
+      <div class="info-chips"><span class="chip">🚢 下龍灣國賓號豪華日遊船</span><span class="chip">🛶 長安生態保護區竹筏</span><span class="chip">🏛️ 巴亭廣場・胡志明故居</span><span class="chip">🚡 電瓶車遊 36 古街</span><span class="chip">🚠 女皇跨海纜車</span><span class="chip">🎡 太陽之眼摩天輪</span><span class="chip">🙌 全程無購物</span></div>
+      <div class="price-row"><div class="price-box"><div class="pr-lbl">雙人房（每人）</div><div class="pr-val">31,500 元</div></div><div class="price-box"><div class="pr-lbl">單人房（每人）</div><div class="pr-val">37,500 元</div></div><div class="price-box"><div class="pr-lbl">小孩佔床（每人）</div><div class="pr-val">31,500 元</div></div><div class="price-box"><div class="pr-lbl">小孩不佔床（每人）</div><div class="pr-val">29,500 元</div></div></div>
+    </div>
+  </div></div>
         </div>
       </div>
     </div>
@@ -297,6 +346,8 @@
 </div>
 
 <script>
+const hl_emoji = {"故宮南院": "🏛️", "五分車尋蜜號": "🚂", "蒜頭糖廠": "🍬", "花園夜市": "🌙", "小琉球浮潛／玻璃船": "🤿", "海景 VILLA 住宿": "🏨", "高鐵左營往返": "🚄", "馬祖酒廠・八八坑道": "🍶", "媽祖巨神像": "⛩️", "北海坑道夜間搖櫓藍眼淚": "✨", "藍眼淚體驗館": "💙", "芹壁閩東古厝下午茶": "☕", "松山機場直飛": "✈️", "海上泳池 VILLA 入住": "🏊", "馬六甲世界遺產・三輪車遊古城": "🛺", "馬六甲河遊船": "⛵", "黑風洞彩虹階梯": "🌈", "雙子星花園廣場（外觀）": "🏙️", "Lalaport 購物中心・亞羅街夜市": "🛍️", "粉紅清真寺・三井名牌城": "🕌", "下龍灣國賓號豪華日遊船": "🚢", "長安生態保護區竹筏": "🛶", "巴亭廣場・胡志明故居": "🏛️", "電瓶車遊 36 古街": "🚡", "女皇跨海纜車": "🚠", "太陽之眼摩天輪": "🎡", "全程無購物": "🙌"};
+
 const DOM_TRIPS = [
   {
     id:'d1', title:'台南・小琉球 3 日遊', duration:'3 天 7 餐 2 宿',
@@ -358,14 +409,13 @@ function buildCard(t) {
     <div class="tc-head">
       <div class="check-box">✓</div>
       <div class="tc-title">${t.title}</div>
-      <span class="tc-duration">${t.duration}</span>
+
     </div>
     <div class="sel-badge">✅ 已選擇此行程</div>
     <div class="tc-body">
-      <div class="tc-date">📅 出發時間：${t.date}</div>
-      <div class="info-chips">${t.hl.map(h=>`<span class="chip">${h}</span>`).join('')}</div>
+      <div style="font-size:14px;font-weight:600;color:#374151;margin-bottom:6px;">✨ 行程亮點</div>
+      <div class="info-chips">${t.hl.map(h=>`<span class="chip">${hl_emoji[h] ? hl_emoji[h]+' ' : ''}${h}</span>`).join('')}</div>
       <div class="price-row">${t.prices.map(p=>`<div class="price-box"><div class="pr-lbl">${p.r}</div><div class="pr-val">${p.p}</div></div>`).join('')}</div>
-      <div class="notice">📌 ${t.note}</div>
     </div>
   </div>`;
 }
@@ -408,28 +458,52 @@ function trySubmit() {
 
 function closeModal() { document.getElementById('modal').classList.remove('show'); }
 
+// ▼▼▼ 請將 Apps Script 部署後的網址貼在此處 ▼▼▼
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfROWg9lyKdIMvFUPQGi1BJxGrpWaI9Hza_YQ2zc4y0IzDTvB5v7ziBixYZd2WDP_N/exec";
+// ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
 function confirmSubmit() {
   closeModal();
-  const name = document.getElementById('f-name').value.trim();
-  const dept = document.getElementById('f-dept').value;
-  const count = document.getElementById('f-count').value || '0';
+  const name   = document.getElementById('f-name').value.trim();
+  const dept   = document.getElementById('f-dept').value;
+  const count  = document.getElementById('f-count').value || '0';
   const remark = document.getElementById('f-remark').value.trim();
 
-  let detail = `${name}（${dept}）已完成填寫。\n`;
-  if (selectedIntent === 'no') {
-    detail += '意願：無參加意願，希望延至 2027 年舉行。';
-  } else {
-    const t = findTrip(selectedTrip);
-    detail += `意願：有參加意願，選擇「${t.title}」。\n預計同行 ${count} 人（不含本人）。`;
-  }
-  if (remark) detail += `\n備註：${remark}`;
+  const tripTitle  = selectedIntent === 'yes' ? findTrip(selectedTrip).title : '';
+  const intentText = selectedIntent === 'no' ? '無參加意願，希望延至 2027 年舉行' : '有參加意願';
 
-  document.getElementById('success-detail').textContent = detail;
-  document.getElementById('success-msg').style.display = 'block';
-  document.querySelector('.submit-btn').disabled = true;
-  document.querySelector('.submit-btn').textContent = '✅ 已送出';
-  document.getElementById('success-msg').scrollIntoView({behavior:'smooth'});
+  const btn = document.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ 送出中…';
+
+  const payload = { name, dept, count, intent: intentText, trip: tripTitle, remark };
+
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(() => {
+    let detail = name + '（' + dept + '）已完成填寫。\n';
+    if (selectedIntent === 'no') {
+      detail += '意願：無參加意願，希望延至 2027 年舉行。';
+    } else {
+      detail += '意願：有參加意願，選擇「' + tripTitle + '」。\n預計同行 ' + count + ' 人（不含本人）。';
+    }
+    if (remark) detail += '\n備註：' + remark;
+    document.getElementById('success-detail').textContent = detail;
+    document.getElementById('success-msg').style.display = 'block';
+    btn.textContent = '✅ 已送出';
+    document.getElementById('success-msg').scrollIntoView({behavior:'smooth'});
+  })
+  .catch(() => {
+    btn.disabled = false;
+    btn.textContent = '送出調查表';
+    alert('送出失敗，請確認網路連線後再試一次。');
+  });
 }
 </script>
-</body>
-</html>
+
+
+</body></html>
