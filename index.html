@@ -3,795 +3,433 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>超尊科技 旅遊比價表</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>2026 年員工旅遊意向調查表</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=DM+Mono:wght@400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#f5f4f0;font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;color:#1a1a1a;}
+  .wrap{max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem;}
 
-  :root {
-    --bg: #f2f4f8; --card: #fff; --txt: #1a1c2e; --txt2: #6b7280;
-    --border: #e2e8f0; --radius: 14px;
-    --shadow: 0 2px 10px rgba(0,0,0,.07); --shadow-h: 0 6px 24px rgba(0,0,0,.14);
-    --tw: #0d6e2a; --tw-l: #e8f5ee; --tw-acc: #16a34a;
-    --vn: #c0232b; --vn-l: #fff0f0; --vn-acc: #e03040;
-    --th: #9b5e00; --th-l: #fff8e8; --th-acc: #d97706;
-    --kr: #1e40af; --kr-l: #eef2ff; --kr-acc: #3b82f6;
-    --jp: #7c1d4f; --jp-l: #fdf0f6; --jp-acc: #be185d;
-    --my: #0e6e6e; --my-l: #e8fafa; --my-acc: #0891b2;
-    --ph: #7e3a00; --ph-l: #fff4ea; --ph-acc: #ea580c;
-    --cn: #7b1717; --cn-l: #fff3f3; --cn-acc: #dc2626;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg); color: var(--txt); }
+  /* 頁首 */
+  .page-header{text-align:center;padding:2rem 1.5rem 1.75rem;background:#fff;border-radius:16px;margin-bottom:1.75rem;border:1px solid #ddd;}
+  .page-header h1{font-size:30px;font-weight:700;color:#1a1a1a;margin-bottom:0.5rem;}
+  .page-header .company{font-size:18px;color:#555;margin-bottom:0.9rem;}
+  .deadline{display:inline-block;background:#FAECE7;color:#993C1D;font-size:17px;font-weight:600;padding:7px 20px;border-radius:8px;}
 
-  /* HEADER */
-  header {
-    background: linear-gradient(135deg, #0f1d3e 0%, #1a3a7a 100%);
-    padding: 20px 40px; display: flex; align-items: center; gap: 14px;
-    position: sticky; top: 0; z-index: 200; box-shadow: 0 3px 16px rgba(0,0,0,.3);
-  }
-  .logo { width: 38px; height: 38px; border-radius: 8px; background: #f0a500; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 17px; color: #fff; flex-shrink: 0; }
-  header h1 { color: #fff; font-size: 17px; font-weight: 700; }
-  header h1 span { display: block; font-size: 11px; font-weight: 300; opacity: .55; margin-top: 1px; }
-  .hd-count { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,.45); }
+  /* 區塊通用 */
+  .section{background:#fff;border:1px solid #ddd;border-radius:14px;margin-bottom:1.75rem;overflow:hidden;}
+  .sec-head{padding:1rem 1.5rem;border-bottom:1px solid #e8e8e8;display:flex;align-items:center;gap:0.75rem;background:#fafafa;}
+  .sec-num{background:#dbeafe;color:#1d4ed8;font-size:15px;font-weight:600;padding:4px 14px;border-radius:6px;white-space:nowrap;}
+  .sec-title{font-size:22px;font-weight:600;color:#1a1a1a;}
+  .sec-body{padding:1.4rem 1.5rem;}
 
-  /* FILTER BAR */
-  .filter-bar {
-    padding: 0 40px;
-    background: var(--bg); border-bottom: 1px solid var(--border);
-    position: sticky; top: 78px; z-index: 100;
-  }
-  .filter-row {
-    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    padding: 10px 0;
-  }
-  .filter-row + .filter-row {
-    border-top: 1px solid var(--border);
-  }
-  .fl { font-size: 15px; font-weight: 700; color: var(--txt2); text-transform: uppercase; letter-spacing: .03em; margin-right: 4px; white-space: nowrap; }
-  .chip {
-    padding: 7px 16px; border-radius: 20px; font-size: 15px; font-weight: 500;
-    border: 1.5px solid var(--border); background: var(--card); color: var(--txt2);
-    cursor: pointer; transition: all .15s; white-space: nowrap;
-  }
-  .chip:hover { border-color: #6b7280; color: var(--txt); }
-  .chip.on { border-color: #1e40af; background: #eef2ff; color: #1e3a8a; font-weight: 700; }
-  .sep { width: 1px; height: 20px; background: var(--border); margin: 0 3px; flex-shrink: 0; }
+  /* 第1部分 */
+  .info-list{list-style:none;}
+  .info-list li{font-size:18px;color:#1a1a1a;line-height:1.9;padding:0.35rem 0 0.35rem 1.5rem;position:relative;}
+  .info-list li::before{content:"•";color:#2563eb;font-size:22px;line-height:1.8;position:absolute;left:0;top:0.3rem;}
+  .info-note{margin-top:1rem;padding:0.8rem 1.1rem;background:#dbeafe;border-radius:9px;font-size:16px;color:#1d4ed8;border-left:4px solid #2563eb;}
 
-  /* PAGE */
-  .page { padding: 26px 40px 60px; }
+  /* 第2部分 */
+  .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+  .field{display:flex;flex-direction:column;gap:7px;}
+  .field label{font-size:18px;color:#1a1a1a;font-weight:600;}
+  .field input,.field select{padding:12px 15px;font-size:17px;border:2px solid #d1d5db;border-radius:9px;background:#fff;color:#1a1a1a;width:100%;font-family:inherit;}
+  .field input:focus,.field select:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px #dbeafe;}
+  .req{color:#dc2626;margin-left:3px;}
 
-  /* DESTINATION GROUP */
-  .dest-group { margin-bottom: 34px; }
-  .dest-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-  .dest-flag { font-size: 22px; }
-  .dest-name { font-size: 16px; font-weight: 900; }
-  .dest-region { font-size: 13px; color: var(--txt2); }
-  .multi-badge { font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 12px; margin-left: 4px; }
+  /* 第3部分 */
+  .intent-group{display:flex;flex-direction:column;gap:1rem;}
+  .intent-btn{display:flex;align-items:flex-start;gap:1rem;padding:1.2rem 1.5rem;border:2.5px solid #d1d5db;border-radius:13px;cursor:pointer;transition:all 0.15s;background:#fff;}
+  .intent-btn:hover{border-color:#2563eb;background:#eff6ff;}
+  .intent-btn.sel-no{border-color:#dc2626;background:#fef2f2;}
+  .intent-btn.sel-yes{border-color:#16a34a;background:#f0fdf4;}
+  .intent-radio{width:24px;height:24px;border:2.5px solid #d1d5db;border-radius:50%;flex-shrink:0;margin-top:3px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;}
+  .intent-btn.sel-no .intent-radio{border-color:#dc2626;background:#dc2626;}
+  .intent-btn.sel-yes .intent-radio{border-color:#16a34a;background:#16a34a;}
+  .intent-radio-dot{width:11px;height:11px;background:#fff;border-radius:50%;display:none;}
+  .intent-btn.sel-no .intent-radio-dot,.intent-btn.sel-yes .intent-radio-dot{display:block;}
+  .intent-label{font-size:21px;font-weight:600;color:#1a1a1a;}
+  .intent-desc{font-size:16px;color:#6b7280;margin-top:4px;}
+  .intent-desc-highlight{display:inline-block;margin-top:10px;padding:8px 16px;background:#fef9c3;border:2px solid #facc15;border-radius:8px;font-size:18px;font-weight:700;color:#854d0e;}
 
-  /* CARD GRID */
-  .card-grid { display: grid; gap: 14px; }
-  .card-grid.c1 { grid-template-columns: 1fr; }
-  .card-grid.c2 { grid-template-columns: 1fr 1fr; }
-  .card-grid.c3 { grid-template-columns: 1fr 1fr 1fr; }
+  /* 第4部分 */
+  .trip-area{display:none;}
+  .trip-area.show{display:block;}
+  .trip-intro{font-size:18px;color:#555;margin-bottom:1.75rem;}
+  .trip-intro strong{color:#1a1a1a;}
 
-  /* CARD */
-  .card { background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); border: 1.5px solid var(--border); overflow: hidden; transition: box-shadow .2s, transform .15s; }
-  .card:hover { box-shadow: var(--shadow-h); transform: translateY(-2px); }
-  .card-strip { height: 5px; }
+  .region-block{margin-bottom:2.25rem;}
+  .region-banner{display:flex;align-items:center;gap:0.9rem;padding:0.9rem 1.4rem;border-radius:11px;margin-bottom:1.3rem;}
+  .region-banner.dom{background:#dcfce7;border:1px solid #86efac;}
+  .region-banner.intl{background:#dbeafe;border:1px solid #93c5fd;}
+  .region-banner .ricon{font-size:28px;}
+  .region-banner .rtitle{font-size:24px;font-weight:700;}
+  .region-banner.dom .rtitle{color:#15803d;}
+  .region-banner.intl .rtitle{color:#1d4ed8;}
+  .region-banner .rsub{font-size:15px;margin-left:auto;padding:5px 16px;border-radius:20px;font-weight:600;}
+  .region-banner.dom .rsub{background:#15803d;color:#fff;}
+  .region-banner.intl .rsub{background:#1d4ed8;color:#fff;}
 
-  /* CARD TOP */
-  .card-top { display: grid; grid-template-columns: 1fr auto; gap: 10px; padding: 15px 17px 12px; cursor: pointer; user-select: none; align-items: start; }
-  .agency-badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 5px; margin-bottom: 6px; }
-  .b-water { background: #dbeafe; color: #1d4ed8; }
-  .b-yuan  { background: #ffedd5; color: #c2410c; }
-  .b-kola  { background: #dcfce7; color: #166534; }
-  .b-lion  { background: #fce7f3; color: #9d174d; }
-  .trip-name { font-size: 14px; font-weight: 700; line-height: 1.3; }
-  .trip-sub { font-size: 11px; font-weight: 600; margin-top: 3px; }
-  .trip-meta { font-size: 11px; color: var(--txt2); margin-top: 5px; line-height: 1.75; }
-  .price-num { font-size: 19px; font-weight: 900; white-space: nowrap; }
-  .price-sub { font-size: 10px; color: var(--txt2); margin-top: 3px; line-height: 1.5; text-align: right; }
+  .trip-card{border:2.5px solid #e5e7eb;border-radius:13px;margin-bottom:1.3rem;cursor:pointer;transition:all 0.2s;background:#fff;overflow:hidden;}
+  .trip-card:hover{border-color:#2563eb;box-shadow:0 0 0 4px #dbeafe;}
+  .trip-card.selected{border-color:#f59e0b;background:#fef3c7;box-shadow:0 0 0 4px #fde68a;}
+  .tc-head{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.4rem;border-bottom:1px solid #e5e7eb;}
+  .trip-card.selected .tc-head{border-bottom-color:#f59e0b;}
+  .check-box{display:none;}
+  .trip-card.selected .check-box{display:none;}
+  .tc-title{font-size:22px;font-weight:700;color:#1a1a1a;flex:1;}
+  .trip-card.selected .tc-title{color:#78350f;}
+  .tc-duration{font-size:15px;color:#6b7280;background:#f3f4f6;padding:4px 13px;border-radius:7px;white-space:nowrap;font-weight:500;}
 
-  /* TOGGLE ROW */
-  .toggle-row { display: flex; align-items: center; justify-content: center; gap: 5px; padding: 7px; border-top: 1px dashed var(--border); cursor: pointer; font-size: 11px; font-weight: 600; color: var(--txt2); transition: background .15s; }
-  .toggle-row:hover { background: #f8fafc; }
-  .arrow { transition: transform .25s; display: inline-block; }
-  .card.open .arrow { transform: rotate(180deg); }
+  .sel-badge{display:none;align-items:center;gap:0.6rem;padding:0.65rem 1.4rem;background:#f59e0b;color:#fff;font-size:18px;font-weight:700;border-bottom:1px solid #fbbf24;}
+  .trip-card.selected .sel-badge{display:flex;}
 
-  /* ITINERARY */
-  .itin { display: none; border-top: 1.5px solid var(--border); }
-  .card.open .itin { display: block; }
-  .day-row { display: grid; grid-template-columns: 48px 1fr; border-bottom: 1px solid var(--border); min-height: 48px; }
-  .day-row:last-child { border-bottom: none; }
-  .day-lbl { display: flex; align-items: flex-start; justify-content: center; padding: 11px 0; border-right: 1px solid var(--border); }
-  .day-pill { font-size: 10px; font-weight: 900; letter-spacing: .06em; padding: 3px 5px; border-radius: 5px; }
-  .day-txt { padding: 10px 13px; font-size: 12px; color: var(--txt2); line-height: 1.8; }
-  .day-txt.na { color: #c8ccd6; font-style: italic; }
+  .tc-body{padding:1.1rem 1.4rem;}
+  .tc-date{font-size:15px;color:#6b7280;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.4rem;}
+  .info-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem;}
+  .chip{font-size:14px;background:#f3f4f6;color:#374151;border:1px solid #e5e7eb;border-radius:6px;padding:5px 12px;}
 
-  @media (max-width: 820px) {
-    header { padding: 13px 16px; }
-    .filter-bar, .page { padding-left: 14px; padding-right: 14px; }
-    .card-grid.c2, .card-grid.c3 { grid-template-columns: 1fr; }
+  .price-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:0.7rem;margin-bottom:1rem;}
+  .price-box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:9px;padding:0.7rem 1rem;}
+  .trip-card.selected .price-box{background:rgba(255,255,255,0.7);border-color:#f59e0b;}
+  .pr-lbl{font-size:13px;color:#6b7280;margin-bottom:3px;}
+  .pr-val{font-size:19px;font-weight:700;color:#1d4ed8;}
+
+  .notice{font-size:14px;color:#6b7280;padding:0.6rem 1rem;background:#f9fafb;border-radius:8px;border-left:3px solid #d1d5db;line-height:1.7;}
+  .trip-card.selected .notice{background:rgba(255,255,255,0.6);border-left-color:#f59e0b;color:#78350f;}
+  .trip-card.selected .tc-date{color:#78350f;}
+  .trip-card.selected .chip{background:rgba(255,255,255,0.6);color:#78350f;border-color:#f59e0b;}
+  .trip-card.selected .pr-lbl{color:#92400e;}
+  .trip-card.selected .pr-val{color:#78350f;}
+  .trip-card.selected .tc-duration{background:rgba(255,255,255,0.6);color:#78350f;}
+
+  /* 第5部分 */
+  .remark-ta{width:100%;padding:13px 16px;font-size:17px;border:2px solid #d1d5db;border-radius:10px;background:#fff;color:#1a1a1a;min-height:100px;resize:vertical;font-family:inherit;line-height:1.7;}
+  .remark-ta:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px #dbeafe;}
+
+  /* 送出 */
+  .submit-area{text-align:center;padding-top:1.75rem;border-top:2px solid #e5e7eb;margin-top:2rem;}
+  .submit-hint{font-size:17px;color:#6b7280;margin-bottom:1.2rem;}
+  .submit-btn{font-size:22px;font-weight:700;padding:16px 56px;background:#1d4ed8;color:#fff;border:none;border-radius:12px;cursor:pointer;transition:background 0.15s;letter-spacing:0.5px;}
+  .submit-btn:hover{background:#1e40af;}
+  .submit-btn:active{transform:scale(0.98);}
+  .submit-btn:disabled{background:#9ca3af;cursor:not-allowed;}
+
+  /* 確認彈窗 */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:999;align-items:center;justify-content:center;padding:1rem;}
+  .modal-overlay.show{display:flex;}
+  .modal{background:#fff;border-radius:18px;padding:2.25rem 2rem 2rem;max-width:540px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.2);}
+  .m-icon{font-size:48px;text-align:center;margin-bottom:0.8rem;}
+  .m-title{font-size:26px;font-weight:700;color:#1a1a1a;text-align:center;margin-bottom:0.7rem;}
+  .m-body{font-size:18px;color:#6b7280;text-align:center;margin-bottom:1.3rem;line-height:1.7;}
+  .m-choice{background:#eff6ff;border:2px solid #93c5fd;border-radius:12px;padding:1.1rem 1.4rem;margin-bottom:1.5rem;text-align:center;}
+  .m-choice .mc-type{font-size:16px;color:#6b7280;margin-bottom:5px;}
+  .m-choice .mc-main{font-size:22px;font-weight:700;color:#1d4ed8;}
+  .m-btns{display:flex;gap:1rem;}
+  .mbtn{flex:1;padding:14px;font-size:18px;font-weight:600;border-radius:10px;border:2px solid #d1d5db;cursor:pointer;background:#fff;color:#374151;transition:all 0.15s;font-family:inherit;}
+  .mbtn:hover{background:#f3f4f6;}
+  .mbtn-ok{background:#1d4ed8;color:#fff;border-color:#1d4ed8;}
+  .mbtn-ok:hover{background:#1e40af;}
+
+  /* 成功訊息 */
+  .success-msg{display:none;background:#f0fdf4;border:2.5px solid #86efac;border-radius:14px;padding:2rem 1.5rem;margin-top:1.75rem;text-align:center;}
+  .success-msg h3{font-size:26px;font-weight:700;color:#14532d;margin-bottom:0.75rem;}
+  .success-msg p{font-size:18px;color:#166534;line-height:1.9;white-space:pre-line;}
+
+  @media(max-width:620px){
+    .field-grid{grid-template-columns:1fr;}
+    .m-btns{flex-direction:column;}
+    .tc-title{font-size:19px;}
+    .region-banner .rtitle{font-size:21px;}
   }
-
-  /* ── SUBMIT PANEL ── */
-  .submit-panel {
-    position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
-    background: #fff; border-top: 2px solid #e2e8f0;
-    box-shadow: 0 -4px 24px rgba(0,0,0,.12);
-    padding: 0;
-    transition: transform .3s ease;
-  }
-  .submit-panel.hidden { transform: translateY(100%); }
-
-  .sp-inner {
-    max-width: 1200px; margin: 0 auto;
-    padding: 14px 40px;
-    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-  }
-
-  .sp-selections {
-    display: flex; gap: 10px; flex: 1; flex-wrap: wrap; align-items: center;
-  }
-  .sp-label { font-size: 12px; font-weight: 700; color: #6b7280; white-space: nowrap; }
-  .sel-tag {
-    display: flex; align-items: center; gap: 5px;
-    padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600;
-    animation: popIn .2s ease;
-  }
-  .sel-tag.dom-tag { background: #fffbeb; color: #92400e; }
-  .sel-tag.ovs-tag { background: #fffbeb; color: #92400e; }
-  .sel-tag .rm { cursor: pointer; font-size: 14px; opacity: .6; line-height: 1; }
-  .sel-tag .rm:hover { opacity: 1; }
-  .no-sel { font-size: 12px; color: #9ca3af; font-style: italic; }
-
-  @keyframes popIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to   { transform: scale(1);   opacity: 1; }
-  }
-
-  .sp-btn {
-    padding: 10px 24px; border-radius: 10px; border: none; cursor: pointer;
-    font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 700;
-    transition: all .15s; white-space: nowrap;
-  }
-  .sp-btn.fill-form { background: #1e3a8a; color: #fff; }
-  .sp-btn.fill-form:hover { background: #1e40af; }
-  .sp-btn:disabled { opacity: .35; cursor: not-allowed; }
-
-  /* ── CARD SELECT STATE ── */
-  .card.sel-dom { outline: 4px solid #f59e0b; outline-offset: 3px; box-shadow: 0 0 0 1px #f59e0b; }
-  .card.sel-ovs { outline: 4px solid #f59e0b; outline-offset: 3px; box-shadow: 0 0 0 1px #f59e0b; }
-  .sel-check {
-    position: absolute; top: 10px; right: 10px;
-    width: 22px; height: 22px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; color: #fff; font-weight: 900; opacity: 0;
-    transition: opacity .15s;
-  }
-  .card { position: relative; }
-  .card.sel-dom .sel-check.dom-chk,
-  .card.sel-ovs .sel-check.ovs-chk { opacity: 1; }
-
-  /* ── MODAL ── */
-  .modal-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,.5);
-    z-index: 400; display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  .modal-overlay.hidden { display: none; }
-  .modal {
-    background: #fff; border-radius: 16px; padding: 32px;
-    width: 100%; max-width: 500px; box-shadow: 0 20px 60px rgba(0,0,0,.3);
-  }
-  .modal h2 { font-size: 18px; font-weight: 900; margin-bottom: 6px; color: #1a1c2e; }
-  .modal .subtitle { font-size: 12px; color: #6b7280; margin-bottom: 24px; }
-  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .form-grid.full { grid-template-columns: 1fr; }
-  .field { display: flex; flex-direction: column; gap: 5px; }
-  .field label { font-size: 11px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: .06em; }
-  .field input, .field textarea, .field select {
-    padding: 9px 12px; border-radius: 8px; border: 1.5px solid #e2e8f0;
-    font-family: 'Noto Sans TC', sans-serif; font-size: 13px; color: #1a1c2e;
-    transition: border-color .15s;
-  }
-  .field input:focus, .field textarea:focus, .field select:focus {
-    outline: none; border-color: #3b82f6;
-  }
-  .field textarea { resize: vertical; min-height: 70px; }
-  .selection-summary {
-    background: #f8fafc; border-radius: 8px; padding: 12px 14px;
-    margin: 16px 0; border: 1.5px solid #e2e8f0;
-  }
-  .selection-summary p { font-size: 12px; color: #374151; line-height: 1.8; }
-  .selection-summary strong { color: #1a1c2e; }
-  .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
-  .btn-cancel { flex: 1; padding: 11px; border-radius: 8px; border: 1.5px solid #e2e8f0; background: #fff; color: #6b7280; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; }
-  .btn-cancel:hover { background: #f8fafc; }
-  .btn-submit { flex: 2; padding: 11px; border-radius: 8px; border: none; background: #1e3a8a; color: #fff; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; transition: background .15s; }
-  .btn-submit:hover { background: #1e40af; }
-  .btn-submit:disabled { opacity: .4; cursor: not-allowed; }
-  .sending-txt { display: none; }
-
-  /* ── SUCCESS ── */
-  .success-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,.55);
-    z-index: 500; display: flex; align-items: center; justify-content: center;
-  }
-  .success-overlay.hidden { display: none; }
-  .success-box {
-    background: #fff; border-radius: 16px; padding: 40px 32px; text-align: center;
-    max-width: 360px; width: 90%;
-  }
-  .success-icon { font-size: 48px; margin-bottom: 12px; }
-  .success-box h3 { font-size: 20px; font-weight: 900; color: #0d6e2a; margin-bottom: 8px; }
-  .success-box p { font-size: 13px; color: #6b7280; line-height: 1.7; }
-  .btn-close-success { margin-top: 20px; padding: 10px 28px; border-radius: 8px; border: none; background: #1e3a8a; color: #fff; font-family: 'Noto Sans TC', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; }
-
-
-  /* ── CONFIRM MODAL ── */
-  .confirm-overlay {
-    position: fixed; inset: 0; background: rgba(0,0,0,.55);
-    z-index: 450; display: flex; align-items: center; justify-content: center;
-    padding: 20px;
-  }
-  .confirm-overlay.hidden { display: none; }
-  .confirm-box {
-    background: #fff; border-radius: 16px; padding: 32px;
-    width: 100%; max-width: 460px; box-shadow: 0 20px 60px rgba(0,0,0,.3);
-  }
-  .confirm-box h2 { font-size: 17px; font-weight: 900; color: #1a1c2e; margin-bottom: 18px;
-    display: flex; align-items: center; gap: 8px; }
-  .confirm-row { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px;
-    background: #f8fafc; border-radius: 8px; margin-bottom: 8px; border: 1.5px solid #e2e8f0; }
-  .confirm-row-label { font-size: 11px; font-weight: 700; color: #6b7280;
-    white-space: nowrap; margin-top: 2px; min-width: 52px; }
-  .confirm-row-val { font-size: 13px; font-weight: 600; color: #1a1c2e; line-height: 1.5; }
-  .confirm-divider { border: none; border-top: 1px dashed #e2e8f0; margin: 14px 0; }
-  .confirm-person { font-size: 13px; color: #374151; line-height: 2; }
-  .confirm-person span { font-weight: 700; color: #1a1c2e; }
-  .confirm-warn { font-size: 11px; color: #d97706; background: #fffbeb;
-    padding: 8px 12px; border-radius: 6px; margin-top: 12px; border: 1px solid #fde68a; }
-  .confirm-actions { display: flex; gap: 10px; margin-top: 20px; }
-  .btn-confirm-back { flex: 1; padding: 11px; border-radius: 8px; border: 1.5px solid #e2e8f0;
-    background: #fff; color: #6b7280; font-family: 'Noto Sans TC', sans-serif;
-    font-size: 13px; font-weight: 600; cursor: pointer; }
-  .btn-confirm-back:hover { background: #f8fafc; }
-  .btn-confirm-ok { flex: 2; padding: 11px; border-radius: 8px; border: none;
-    background: #1e3a8a; color: #fff; font-family: 'Noto Sans TC', sans-serif;
-    font-size: 13px; font-weight: 700; cursor: pointer; transition: background .15s; }
-  .btn-confirm-ok:hover { background: #1e40af; }
-
-  /* ── BOTTOM PADDING so cards not hidden behind panel ── */
-  .page { padding-bottom: 100px; }
-
-  /* ── SELECT HINT on card hover ── */
-  .card-select-hint {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    font-size: 11px; font-weight: 700; text-align: center; padding: 6px;
-    opacity: 0; transition: opacity .15s; pointer-events: none;
-  }
-  .card:hover .card-select-hint { opacity: 1; }
-
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<header>
-  <div class="logo">超</div>
-  <h1>超尊科技 旅遊比價表<span>依目的地分組 · 共 20 個行程方案</span></h1>
-  <div class="hd-count">2025 / 2026</div>
-</header>
-
-<div class="filter-bar">
-  <div class="filter-row">
-    <span class="fl">旅行社</span>
-    <button class="chip on" onclick="flt('a','all',this)">全部</button>
-    <button class="chip" onclick="flt('a','水母',this)">水母</button>
-    <button class="chip" onclick="flt('a','原得',this)">原得</button>
-    <button class="chip" onclick="flt('a','可樂',this)">可樂</button>
-    <button class="chip" onclick="flt('a','雄獅',this)">雄獅</button>
+  <!-- 頁首 -->
+  <div class="page-header">
+    <h1>🏖️ 2026 年員工旅遊意向調查</h1>
+    <p class="company">超尊科技股份有限公司　管理部</p>
+    <div class="deadline">⏰ 請於收到後 3 天內完成填寫並回傳</div>
   </div>
-  <div class="filter-row">
-    <span class="fl">國家</span>
-    <button class="chip on" onclick="flt('c','all',this)">全部</button>
-    <button class="chip" onclick="flt('c','台灣',this)">🇹🇼 台灣</button>
-    <button class="chip" onclick="flt('c','越南',this)">🇻🇳 越南</button>
-    <button class="chip" onclick="flt('c','泰國',this)">🇹🇭 泰國</button>
-    <button class="chip" onclick="flt('c','韓國',this)">🇰🇷 韓國</button>
-    <button class="chip" onclick="flt('c','日本',this)">🇯🇵 日本</button>
-    <button class="chip" onclick="flt('c','馬來西亞',this)">🇲🇾 馬來西亞</button>
-    <button class="chip" onclick="flt('c','菲律賓',this)">🇵🇭 菲律賓</button>
-    <button class="chip" onclick="flt('c','中國',this)">🇨🇳 中國</button>
-  </div>
-  <div class="filter-row">
-    <span class="fl">每人價格</span>
-    <button class="chip on" onclick="flt('p','all',this)">全部</button>
-    <button class="chip" onclick="flt('p','0-15000',this)">15,000 以下</button>
-    <button class="chip" onclick="flt('p','15000-25000',this)">15,000–25,000</button>
-    <button class="chip" onclick="flt('p','25000-30000',this)">25,000–30,000</button>
-    <button class="chip" onclick="flt('p','30000-999999',this)">30,000 以上</button>
-  </div>
-</div>
 
-<div class="page" id="page"></div>
-
-
-<!-- ── SUBMIT PANEL ── -->
-<div class="submit-panel" id="submitPanel">
-  <div class="sp-inner">
-    <div class="sp-selections">
-      <span class="sp-label">已選：</span>
-      <span id="selTags"><span class="no-sel">尚未勾選任何行程</span></span>
+  <!-- 第1部分：旅遊資訊說明 -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="sec-num">第 1 部分</span>
+      <span class="sec-title">旅遊資訊說明</span>
     </div>
-    <button class="sp-btn fill-form" id="openFormBtn" onclick="openModal()" disabled>
-      ✉️ 填寫資料並送出
-    </button>
+    <div class="sec-body">
+      <ul class="info-list">
+        <li>2026 年員工旅遊預計於 <strong>2026 年 9 至 11 月</strong> 期間舉行，確切出發日期將於確認後另行公布並進行時間調查。</li>
+        <li>本次提供之報價，將依實際出團人數及當時情況保有合理調整空間，最終費用以旅行社正式報價為準。</li>
+      </ul>
+      <div class="info-note">📋 本調查結果僅作為管理部規劃參考，不代表最終確認報名。</div>
+    </div>
+  </div>
+
+  <!-- 第2部分：填表人資訊 -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="sec-num">第 2 部分</span>
+      <span class="sec-title">填表人資訊</span>
+    </div>
+    <div class="sec-body">
+      <div class="field-grid">
+        <div class="field">
+          <label>姓名 <span class="req">*</span></label>
+          <input type="text" id="f-name" placeholder="請輸入您的姓名">
+        </div>
+        <div class="field">
+          <label>部門 <span class="req">*</span></label>
+          <select id="f-dept">
+            <option value="">— 請選擇部門 —</option>
+            <option>總經理室</option>
+            <option>財務部</option>
+            <option>管理部</option>
+            <option>資材部</option>
+            <option>機械部</option>
+            <option>電控維修部</option>
+            <option>工程部</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>預計同行人數 <span class="req">*</span> <span style="font-size:15px;font-weight:400;color:#6b7280;">（不含本人，僅本人參加請填 0）</span></label>
+          <input type="number" id="f-count" value="0" min="0">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第3部分：意願調查 -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="sec-num">第 3 部分</span>
+      <span class="sec-title">意願調查</span>
+    </div>
+    <div class="sec-body">
+      <div class="intent-group">
+        <div class="intent-btn" id="btn-no" onclick="setIntent('no')">
+          <div class="intent-radio"><div class="intent-radio-dot"></div></div>
+          <div>
+            <div class="intent-label">無參加意願 — 希望延至 2027 年舉行</div>
+            <div class="intent-desc">選擇此項後可直接送出表單</div>
+          </div>
+        </div>
+        <div class="intent-btn" id="btn-yes" onclick="setIntent('yes')">
+          <div class="intent-radio"><div class="intent-radio-dot"></div></div>
+          <div>
+            <div class="intent-label">有參加意願 — 請選擇一個行程</div>
+            <div class="intent-desc-highlight">📌 請於下方勾選一個您偏好的行程</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第4部分：行程選擇 -->
+  <div class="trip-area" id="trip-area">
+    <div class="section">
+      <div class="sec-head">
+        <span class="sec-num">第 4 部分</span>
+        <span class="sec-title">行程選擇</span>
+      </div>
+      <div class="sec-body">
+        <p class="trip-intro">請從以下行程中<strong>選擇一個</strong>您最希望參加的行程（點選卡片即可選取）。</p>
+
+        <!-- 國內 -->
+        <div class="region-block">
+          <div class="region-banner dom">
+            <span class="ricon">🏝️</span>
+            <span class="rtitle">國內行程</span>
+            <span class="rsub">國內</span>
+          </div>
+          <div id="dom-trips"></div>
+        </div>
+
+        <!-- 國外 -->
+        <div class="region-block">
+          <div class="region-banner intl">
+            <span class="ricon">✈️</span>
+            <span class="rtitle">國外行程</span>
+            <span class="rsub">國外</span>
+          </div>
+          <div id="int-trips"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 第5部分：備註 -->
+  <div class="section">
+    <div class="sec-head">
+      <span class="sec-num">第 5 部分</span>
+      <span class="sec-title">備註</span>
+    </div>
+    <div class="sec-body">
+      <textarea class="remark-ta" id="f-remark" placeholder="如有任何問題、特殊需求或其他建議，請填寫於此（選填）"></textarea>
+    </div>
+  </div>
+
+  <!-- 送出 -->
+  <div class="submit-area">
+    <p class="submit-hint">請確認資料填寫完整後再送出</p>
+    <button class="submit-btn" onclick="trySubmit()">送出調查表</button>
+    <div class="success-msg" id="success-msg">
+      <h3>✅ 感謝您完成填寫！</h3>
+      <p id="success-detail"></p>
+    </div>
   </div>
 </div>
 
-<!-- ── FORM MODAL ── -->
-<div class="modal-overlay hidden" id="modalOverlay">
+<!-- 確認彈窗 -->
+<div class="modal-overlay" id="modal">
   <div class="modal">
-    <h2>📋 填寫意願表單</h2>
-    <p class="subtitle">填寫完成後資料將自動送至 Google Sheets</p>
-
-    <div class="selection-summary" id="modalSummary"></div>
-
-    <div class="form-grid">
-      <div class="field">
-        <label>姓名 *</label>
-        <input type="text" id="fName" placeholder="請輸入姓名" required>
-      </div>
-      <div class="field">
-        <label>部門 *</label>
-        <input type="text" id="fDept" placeholder="例：業務部">
-      </div>
-      <div class="field">
-        <label>預計參加人數 *</label>
-        <input type="number" id="fCount" placeholder="例：2" min="1" max="99">
-      </div>
-      <div class="field">
-        <label>聯絡電話／分機</label>
-        <input type="text" id="fPhone" placeholder="選填">
-      </div>
-    </div>
-    <div class="form-grid full" style="margin-top:12px">
-      <div class="field">
-        <label>偏好備註</label>
-        <textarea id="fNote" placeholder="例：希望避開連假、需要無障礙設施…等"></textarea>
-      </div>
-    </div>
-
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeModal()">取消</button>
-      <button class="btn-submit" id="submitBtn" onclick="submitForm()">
-        <span class="normal-txt">送出意願 →</span>
-        <span class="sending-txt">送出中…</span>
-      </button>
+    <div class="m-icon" id="m-icon"></div>
+    <div class="m-title" id="m-title"></div>
+    <div class="m-body" id="m-body"></div>
+    <div class="m-choice" id="m-choice"></div>
+    <div class="m-btns">
+      <button class="mbtn" onclick="closeModal()">← 返回修改</button>
+      <button class="mbtn mbtn-ok" onclick="confirmSubmit()">確認送出</button>
     </div>
   </div>
 </div>
-
-
-<!-- ── CONFIRM MODAL ── -->
-<div class="confirm-overlay hidden" id="confirmOverlay">
-  <div class="confirm-box">
-    <h2>📋 請確認您的選擇</h2>
-    <div class="confirm-row">
-      <span class="confirm-row-label">🇹🇼 國內</span>
-      <span class="confirm-row-val" id="confirmDom">—</span>
-    </div>
-    <div class="confirm-row">
-      <span class="confirm-row-label">✈️ 國外</span>
-      <span class="confirm-row-val" id="confirmOvs">—</span>
-    </div>
-    <hr class="confirm-divider">
-    <div class="confirm-person" id="confirmPerson"></div>
-    <div class="confirm-warn">⚠️ 確認送出後將無法修改，請再次確認行程與資料正確無誤。</div>
-    <div class="confirm-actions">
-      <button class="btn-confirm-back" onclick="closeConfirm()">← 返回修改</button>
-      <button class="btn-confirm-ok" id="confirmOkBtn" onclick="doSubmit()">確認送出 ✓</button>
-    </div>
-  </div>
-</div>
-
-<!-- ── SUCCESS ── -->
-<div class="success-overlay hidden" id="successOverlay">
-  <div class="success-box">
-    <div class="success-icon">✅</div>
-    <h3>送出成功！</h3>
-    <p id="successMsg">您的旅遊意願已記錄。<br>主管將統計後通知結果，謝謝！</p>
-    <button class="btn-close-success" onclick="closeSuccess()">關閉</button>
-  </div>
-</div>
-
 
 <script>
-const G = [
-  { country:"台灣", flag:"🇹🇼", region:"澎湖", cv:"tw", cards:[
-    { agency:"水母旅行社", badge:"b-water", name:"澎湖 3日（無花火）", sub:"", date:"7/16–18（週三至五）", min:"未列明", price:"15,000", pn:"元/人起\n雅琳2人房；喜來登 16,800", days:["台北松山機場→澎湖馬公→海洋牧場→馬公市區觀光（天后宮、篤行十村）→風味BBQ","南海巡禮：七美嶼＋望安嶼一日遊→澎湖免稅商店（澎坊三號港 Pier3）","飯店→澎湖北環（跨海大橋＋通樑古榕＋二崁古厝）→機場→台北/台中","—","—"] },
-    { agency:"原得旅遊",   badge:"b-yuan",  name:"澎湖 3日（花火節）",  sub:"", date:"115/06月 花火節", min:"25人/車", price:"15,200", pn:"元/人\nA檔雙人房；現金優惠", days:["松山→澎湖馬公→北環（跨海大橋＋通樑古榕＋二崁古厝＋海上牧場體驗）→馬公市區晚餐","南海：望安＋七美＋桶盤巡航→澎湖免稅店","黑糖糕觀光工廠→海上牧場體驗漁夫樂→馬公機場/松山機場","—","—"] },
-    { agency:"雄獅旅遊",   badge:"b-lion",  name:"澎湖 3日（喜來登）",  sub:"", date:"2026年9月 週六出發", min:"35人", price:"16,400", pn:"元/人\n雙人房；匯款轉帳優惠", days:["松山機場→馬公機場→北環之旅（跨海大橋、通樑古榕、大菓葉玄武岩、二崁古厝）→黑糖糕→晚餐→澎湖喜來登","員貝耍廢島一日遊（潮間帶古法抱墩/釣魚擇一＋製作小管一日干）→Pier3三號港免稅店→飯店晚餐（喜來登自助餐）","市區古蹟文化之旅（天后宮、四眼井、中央街、順承門）→丑丑館→馬公機場→松山機場→接駁車","—","—"] },
-  ]},
-  { country:"台灣", flag:"🇹🇼", region:"金門", cv:"tw", cards:[
-    { agency:"水母旅行社", badge:"b-water", name:"金門 3日", sub:"", date:"20人以上成團（週一至六均可）", min:"20人", price:"9,900", pn:"元/人起\n依飯店等級及平/假日", days:["台灣→金門尚義機場→太武山→翟山坑道→建功嶼金門版摩西分海＋石蚵潮間帶","金門大橋→小金門之旅（湖井頭戰史館、沙溪堡、八達樓子車遊）→慈湖三角堡→獅山砲陣地→沙美摩洛哥＋沙美老街→陳景蘭洋樓→昇恆昌免稅店","莒光樓→金沙老街（沙美摩洛哥）→各購物站→返台","—","—"] },
-  ]},
-  { country:"台灣", flag:"🇹🇼", region:"馬祖", cv:"tw", cards:[
-    { agency:"雄獅旅遊", badge:"b-lion", name:"馬祖 3日", sub:"", date:"2026/03/15–09/30", min:"6人", price:"13,400", pn:"元/人起\n平日13,400；假日14,250（含機場接駁）", days:["松山→南竿→蔬菜公園→馬祖酒廠＋八八坑道→馬祖酥糕餅博物館→勝利山莊→馬港天后宮→媽祖巨神像","南竿環島：藍眼淚體驗館→福山照壁（枕戈待旦）→240砲陣地→鐵板少女媽祖→北海坑道（日間走坑道＋夜間搖櫓藍眼淚）","北竿環島（坂里大宅、芹山播音站、芹壁閩東古厝含下午茶）（或南竿）/台北","—","—"] },
-  ]},
-  { country:"台灣", flag:"🇹🇼", region:"台南＋小琉球", cv:"tw", cards:[
-    { agency:"原得旅遊", badge:"b-yuan", name:"台南＋小琉球 3日", sub:"高鐵版", date:"115/07月 週六假日出發", min:"30人/車", price:"12,031", pn:"元/人\n標準＋海景雙人房；現金優惠", days:["故宮南院、五分車尋蜜號、蒜頭糖廠、花園夜市","東港/小琉球、機車環島風光、自由休閒、夜間導覽","浮潛或玻璃船、潮間帶導覽、午餐、小琉球/東港、左營高鐵、賦歸","—","—"] },
-  ]},
-  { country:"越南", flag:"🇻🇳", region:"北越（河內＋下龍灣）", cv:"vn", cards:[
-    { agency:"水母旅行社", badge:"b-water", name:"北越 5日", sub:"", date:"週一 長榮 BR397 09:15/11:35\n週五 長榮 BR386 18:20/21:55", min:"16人", price:"29,500", pn:"元/人（雙人房；現金優惠）", days:["桃園→河內→威尼斯大世界 Mega Grand World（搭貢多拉船）→水上木偶劇→下龍灣飯店","晨喚→下龍灣一日遊（國賓號豪華日遊船‧驚嚇洞‧英雄島‧船上自助餐）含天井洞小扁舟＋快艇巡曳→女皇跨海纜車→太陽之眼摩天輪","飯店→河內→總督府‧巴亭廣場‧胡志明故居‧一柱廟→還劍湖→聖約瑟夫大教堂‧電瓶車遊36條古街→Maison Sen Buffet晚餐饗宴","晨喚→寧平碧洞（入內參觀）→寧平長安生態保護區‧搭乘小舟遊船賞陸龍灣→下龍灣→晚餐→飯店","晨喚→鎮國寺‧西湖→文廟→樂天百貨→河內機場/桃園機場→溫暖的家"] },
-    { agency:"雄獅旅遊",   badge:"b-lion",  name:"北越 5日", sub:"", date:"9–10月出發（避開連假）\n長榮 BR397 09:00/11:05", min:"25人", price:"29,500", pn:"元/人（企業優惠；25人以上）", days:["桃園國際機場→河內→西湖鎮國寺→下龍灣→下龍灣皇后雙層纜車、太陽摩天輪→贈送越式按摩60分鐘（不含小費VND100,000）","海上桂林下龍灣→海豚號 Dolphin Halong Cruise～驚訝洞鐘乳石、英雄島 TiTop觀景台","下龍灣→（車程約2.5小時）→河內→還劍湖→聖若瑟主教座堂→電瓶車遊36古街（不含小費每人VND20,000）→巴亭廣場→總督府＆一柱廟","河內→（車程約2.5小時）→寧平陸龍灣‧碧洞古寺‧長安生態小舟遊船（4人一艘）（不含小費VND20,000/人）→河內→河內樂天百貨（Lotte Mart）","河內（贈送法國麵包＋飲料）→機場→桃園機場"] },
-  ]},
-  { country:"越南", flag:"🇻🇳", region:"中越（峴港）", cv:"vn", cards:[
-    { agency:"水母旅行社", badge:"b-water", name:"中越 峴港 5日", sub:"", date:"週一 長榮 BR383 09:45/11:40\n週五 長榮 BR384 13:00/16:50", min:"16人", price:"31,000", pn:"元/人（成人2人一室）", days:["桃園/峴港～茶山半島‧靈隱寺～龍橋‧愛情鎖橋→會安印象公園‧印象會安秀","晨喚～燈籠製作～迦南島竹筒船之旅＋釣螃蟹～下午飯店自由活動～會安古鎮（日本橋、福建會館、廣肇會館）～懷河乘船＆放水燈～夜市","晨喚～五行山（含電梯上下）～VINCOM PLAZA購物中心～美溪沙灘～飯店","晨喚～巴拿山纜車～FANTASYPARK夢想公園～黃金橋‧法國酒窖（紅酒1杯）‧愛情鎖橋～山茶夜市","晨喚～飯店早餐‧使用設施～峴港教堂‧韓江市場～峴港機場/桃園機場"] },
-  ]},
-  { country:"泰國", flag:"🇹🇭", region:"清邁（泰北）", cv:"th", cards:[
-    { agency:"水母旅行社", badge:"b-water", name:"泰北 清邁 5日", sub:"", date:"桃園→清邁（星期一飛，星期五返台）", min:"16人", price:"36,000", pn:"元/人（2人一室）", days:["桃園機場/清邁機場→溫泉休息站→清萊白廟（龍坤藝術廟）→晚餐→清萊夜市→飯店 CHECK IN","飯店早餐→金三角遊船＋上寮國島→皇太后花園‧花園→清邁晚餐→清邁夜市","清邁→文創藝術村→Elefin Farm & Cafe大象咖啡廳→清邁精油按摩60分鐘→尼曼商圈","飯店→泰山叢林探險記（PONGYANG ZIPLINE叢林滑翔14站＋JUNGLE COASTER叢林雲霄飛車＋QUICK JUMP高空跳躍＋GIANT SWING盪鞦韆＋JUNGLE BIKE空中腳踏車＋Coke&Tai Food）→蘭谷庭園（涼拌木瓜沙拉、泰服體驗、鳥巢、水上盪鞦韆、下午茶、放水燈祈福）→米其林黑森林餐廳晚餐→BIG C採購伴手禮","飯店早餐→清邁機場/桃園機場"] },
-  ]},
-  { country:"泰國", flag:"🇹🇭", region:"曼谷＋芭達雅", cv:"th", cards:[
-    { agency:"可樂旅遊", badge:"b-kola", name:"泰國 5日", sub:"芭達雅＋曼谷", date:"2026年09月 卡假日出發\n中華航空 CI831 09:25/12:10", min:"16人", price:"24,900", pn:"元/人（現金/匯款優惠）", days:["桃園／曼谷 > 小日本村 J-PARK > 芭達雅 > 阿卡薩人妖秀 Alcazar Show（VIP座位席）","爽泰度假莊園（莊園巡禮、泰服體驗、體驗潑水節、放水燈、騎大象、坐馬車、品嘗特色季節性水果）> 免費升等精緻泰服體驗 > 四方水上市場 > 泰式古法按摩（約2小時）> 航廈21百貨（芭達雅）","乳膠睡眠博物館 > 芭達雅-曼谷 > 鄭王廟（黎明寺）> 暹羅天地百貨公司（Iconsiam）> 夜湄南河遊船（來回約2小時、含自助晚餐）","曼谷 > 丹能莎朵歐式水上市場（搭乘舢舨船）> 爆笑鐵路（美功鐵道市場）> 水上漂浮咖啡廳 > 愛侶灣四面佛商圈（中央百貨及 BIG C大賣場）","曼谷/桃園"] },
-  ]},
-  { country:"韓國", flag:"🇰🇷", region:"濟州島", cv:"kr", cards:[
-    { agency:"水母旅行社", badge:"b-water", name:"濟州島 5日", sub:"易斯達航空", date:"週一 EZ886 02:50/06:05\n週五 EZ885 22:40/23:50", min:"16人", price:"29,800", pn:"元/人（進彩妝站；2人一室）", days:["桃園→濟州→海水溫泉汗蒸幕（含毛巾＋專用衣服）→龍頭巖→龍淵峽谷→彩虹海岸散策→梨湖紅白馬燈塔→Hugely Jeju網美咖啡廳→東門市場＋中央地下街→E-marK超市→飯店","晨喚→牛島海洋道立公園（渡輪＋島上觀光巴士）→城山日出峰（世界自然遺產）→史努比庭園→漢拏樹木園夜市→飯店","濟州→Ecoland歐洲森林樂園→濟州AQUA PLANET水族館→OH!雪綠茶博物館→彩妝→飯店","神話世界全日自由活動～主題樂園＋Cosplay韓服變裝體驗4小時～使用飯店設施～藍鼎自助餐","晨喚～神話世界商店街～天地淵瀑布～藥泉寺～泰迪熊博物館～蓮洞商圈～濟州/桃園機場"] },
-  ]},
-  { country:"韓國", flag:"🇰🇷", region:"首爾", cv:"kr", cards:[
-    { agency:"可樂旅遊", badge:"b-kola", name:"韓國 5日", sub:"首爾", date:"2026/09/05 及 09/16出發\n中華航空 CI160 07:50/11:20", min:"16人", price:"26,500", pn:"元/人（現金/匯款優惠）", days:["桃園／仁川 > 小倉織物體驗館（DIY手帕蓋章體驗）> 金豐釀造場（馬格利DIY＋奶泡馬格利品嚐＋復古相機拍照）> 飯店","濟扶島海上觀光纜車（贈飲料每人一杯）> 水原華城 > Starfield星空圖書館2.0 > Starfield大型購物中心","SEOUL SKY樂天世界塔大樓 > 樂天世界 > 三光島（夜景）","光化門廣場（2022重新開幕）> 護肝寶專賣店 > 精緻美膚彩妝坊 > 廣藏傳統市場 > 益善洞韓屋村 > 明洞鬧區（保證逛街四小時）> 飯店","飯店 > 仁川／桃園"] },
-  ]},
-  { country:"日本", flag:"🇯🇵", region:"九州（佐賀／宮崎）", cv:"jp", cards:[
-    { agency:"原得旅遊", badge:"b-yuan", name:"九州 日本 5日", sub:"佐賀／宮崎", date:"115/07月 週四出發\n暑假6/18–8/20", min:"21人", price:"30,800", pn:"元/人（21–25人；現金優惠）", days:["桃園國際機場→日本九州‧佐賀機場→御船山樂園→武雄溫泉樓門＋武雄溫泉新館","有田陶瓷主題公園→採果樂體驗→櫻井二見浦夫婦岩～海中白色大鳥居→鳥栖 PREMIUM OUTLETS｜九州最大購物天堂或 LALAPORT","熊本熊本城→阿蘇火山口→別府溫泉","別府→高千穗峽谷（高千穗神社＋峽谷泛舟）→宮崎市區觀光","住宿飯店→九州‧宮崎機場→桃園國際機場"] },
-  ]},
-  { country:"日本", flag:"🇯🇵", region:"沖繩", cv:"jp", cards:[
-    { agency:"原得旅遊", badge:"b-yuan", name:"沖繩 5日", sub:"", date:"115/07月 週四出發\n暑假7/02–8/20", min:"18人", price:"25,500", pn:"元/人（現金優惠）", days:["台北（桃園國際機場）→那霸空港（琉球國際機場）～黑色鳥居‧波之上神宮","古宇利 Ocean Tower（自動遊覽車、貝殼博物館）→海洋博紀念公園（海豚表演、世界最美之海水族館）→浦添西海岸 PARCO CITY（沖繩最大型綜合式商場）→免稅店或藥妝店","全日自由活動～自行前往國際通","玉泉洞王國村、琉球大鼓隊表演→瀨長島 Umikaji Terrace（地中海希臘風情島嶼）→那霸空港→台北（桃園國際機場）","N/A"] },
-  ]},
-  { country:"馬來西亞", flag:"🇲🇾", region:"吉隆坡（大紅花＋雲頂／麻六甲）", cv:"my", cards:[
-    { agency:"原得旅遊", badge:"b-yuan", name:"馬來西亞 5日", sub:"大紅花＋吉隆坡", date:"08月 週六出發\n暑假8/01–8/29", min:"18人", price:"22,500", pn:"元/人（現金優惠）", days:["桃園國際機場→吉隆坡機場～大紅花 Lexis Hibiscus Port Dickson","大紅花 Lexis Hibiscus→麻六甲之旅（荷蘭紅屋、大鐘樓、基督堂、聖地牙哥城堡、聖保羅教堂、雞場古董街）→三輪車遊古城→馬六甲河遊船","睡眠體驗館→黑風洞（彩虹階梯）→竹林山水 Bamboo Hills（贈星巴克）→巴比倫購物城（星光大道）→雙子星花園廣場（KLCC）→莎羅馬行人天橋","國家皇宮→獨立廣場→高等法院（蘇丹亞都沙大廈）→大馬倉普洱茶葉店（贈南洋下午茶）→生命之河→REX KL復古迷宮書店→鬼仔巷→土產店→全球最大 Lalaport購物中心→亞羅街夜市","三井名牌城 Mitsui Outlet Park採買→吉隆坡/桃園機場"] },
-    { agency:"可樂旅遊",  badge:"b-kola", name:"馬來西亞 5日", sub:"大紅花＋雲頂＋吉隆坡", date:"未列明具體日期\n長榮 BR217 06:30/11:15", min:"16人", price:"28,500", pn:"元/人（現金/匯款優惠）", days:["桃園／吉隆坡 > 麻六甲","麻六甲之旅（荷蘭紅屋、大鐘樓、基督堂、聖地牙哥城堡、聖保羅教堂、雞場古董街）> 三輪車遊古城 > 大紅花 Lexis Hibiscus Port Dickson","渡假村 > GENTING PREMIUM OUTLETSG > 乘坐雲頂纜車 > 雲頂高原娛樂城 > 五星飯店","雲頂高原 > 黑風洞（彩虹階梯）> 睡眠體驗館 > The Exchange TRX吉隆坡新地標（購物商場＋最大空中花園）> 土產店 > 雙子星花園廣場（KLCC）> 鬼仔巷 > 亞羅街夜市 > 五星飯店","布城（粉紅清真寺、布城湖、首相署、首相府廣場）> 吉隆坡/桃園"] },
-  ]},
-  { country:"菲律賓", flag:"🇵🇭", region:"宿霧（薄荷島）", cv:"ph", cards:[
-    { agency:"雄獅旅遊", badge:"b-lion", name:"宿霧 5日", sub:"薄荷島＋鯨鯊＋跳島浮潛", date:"9–10月出發（避開連假）\n長榮 BR281 08:00/10:50", min:"25人", price:"28,000", pn:"元/人（企業優惠；25人以上）", days:["桃園機場→宿霧→市區觀光（聖嬰大教堂、麥哲倫十字架、聖佩特羅堡）→SM購物廣場","宿霧→薄荷島（船程約2.5小時）→尋訪迷你眼鏡猴、歃血盟約紀念碑、眺望巧克力山丘奇景、聖約瑟夫教堂→宿霧","宿霧→雙島浮潛之旅（資生堂島登島、尹魯東葛島海洋保護區浮潛）→濱海渡假村豐盛午餐→立槳SUP教學體驗30分鐘（兩人一板）→網美沙灘戲水","宿霧至 OSLOB歐斯陸（車程約4小時）→鯨鯊保育區～OSLOB歐斯陸→與鯨鯊共舞→歐斯陸市區觀光（聖母無原罪主教教區教堂/古老的西班牙軍營）→宿霧","宿霧→桃園機場"] },
-  ]},
-  { country:"中國", flag:"🇨🇳", region:"廈門（長泰＋南靖＋漳州）", cv:"cn", cards:[
-    { agency:"雄獅旅遊", badge:"b-lion", name:"廈門 5日", sub:"長泰＋南靖＋漳州", date:"9–10月出發（避開連假）\n華信 AE991 08:45/10:30", min:"25人", price:"25,500", pn:"元/人（企業優惠；25人以上）", days:["桃園機場→廈門機場→漳州（車程約1.5小時）－長泰古山重景區～千年古樟～古居民迷宮～南靖－夜遊水雲謠古鎮－精緻庭院圍爐煮茶（免費換古裝拍照）","南靖－南靖雲水謠景區（含：雲水謠古鎮、懷遠樓、和貴樓）－漳州明清一條街（贈《四果湯》）－廈門－集美學村－龍舟池－歸來堂","南普陀－環島路－沙坡尾－外觀雙子塔－演武大橋觀景台－星光大道－中山路步行街（贈霸王茶姬奶茶）","廈門－鼓浪嶼（渡輪＋全程電瓶車）～漫步萬國建築－龍頭路商業街（贈百年小吃葉氏麻糍）－《嶼見閩南》","廈門機場→桃園機場"] },
-  ]},
-  { country:"中國", flag:"🇨🇳", region:"江南（上海／無錫／杭州／烏鎮）", cv:"cn", cards:[
-    { agency:"原得旅遊", badge:"b-yuan", name:"江南 5日", sub:"上海／無錫／杭州／烏鎮", date:"115/07月 週三出發\n暑假6/24–8/20", min:"18人", price:"22,900", pn:"元/人（現金優惠）", days:["桃園國際機場→上海浦東機場～入住酒店","上海→（車程約130KM）→無錫【拈花灣小鎮（漢服體驗、半山銜日、香月花街、拈花塔、妙音台、梵天花海）、清明橋～水弄堂】","無錫【長廣溪濕地公園、珍珠藝術館】→（車程約200KM）→杭州【漫步西湖景區、花港觀魚、太子灣公園、浴鵠灣秘境、明清河坊街】","杭州【小河直街＋京杭運河、龍塢茶鎮＋小背簍採茶體驗】→（車程約90KM）→烏鎮西柵景區【老街、藍印花布染坊、昭明書院、三寸金蓮館】","上海【南京路步行街、27號外貿大樓、和平飯店、漫步外灘】→上海浦東機場→桃園國際機場"] },
-  ]},
+const DOM_TRIPS = [
+  {
+    id:'d1', title:'台南・小琉球 3 日遊', duration:'3 天 7 餐 2 宿',
+    date:'2026年 9～11 月',
+    hl:['故宮南院','五分車尋蜜號','蒜頭糖廠','花園夜市','小琉球浮潛／玻璃船','海景 VILLA 住宿','高鐵左營往返'],
+    prices:[{r:'雙人房（每人）',p:'11,620 元'},{r:'四人房（每人）',p:'10,720 元'}],
+    note:'浮潛或玻璃船二選一，需出發前統計'
+  },
+  {
+    id:'d2', title:'馬祖 3 日遊', duration:'3 天',
+    date:'2026/03/15 ～ 09/30 適用',
+    hl:['馬祖酒廠・八八坑道','媽祖巨神像','北海坑道夜間搖櫓藍眼淚','藍眼淚體驗館','芹壁閩東古厝下午茶','松山機場直飛'],
+    prices:[{r:'成人 平日（每人）',p:'13,850 元'},{r:'成人 假日（每人）',p:'14,700 元'},{r:'65歲以上／愛心 平日',p:'12,150 元'},{r:'65歲以上／愛心 假日',p:'13,050 元'}],
+    note:'假日為週五、週六出發；北竿芹壁住宿每人另加 900 元；含機票、2宿、餐食、責任險'
+  }
 ];
 
-const DL = ['D1','D2','D3','D4','D5'];
+const INT_TRIPS = [
+  {
+    id:'i1', title:'馬來西亞 5 日遊', duration:'5 天',
+    date:'2026年 8 月每週六出發（9月出發可優惠 1,000 元）',
+    hl:['海上泳池 VILLA 入住','馬六甲世界遺產・三輪車遊古城','馬六甲河遊船','黑風洞彩虹階梯','雙子星花園廣場（外觀）','Lalaport 購物中心・亞羅街夜市','粉紅清真寺・三井名牌城'],
+    prices:[{r:'成人現金優惠價（每人）',p:'23,500 元'},{r:'成人定價（每人）',p:'24,000 元'},{r:'小孩不佔床',p:'-1,000 元'},{r:'單人房差',p:'+6,600 元'}],
+    note:'含來回機票、食宿交通門票、保險、導遊領隊司機小費；不含機場接送；護照效期須達 6 個月以上；孕婦滿 6 個月不可入境'
+  },
+  {
+    id:'i2', title:'北越 5 日遊', duration:'5 天',
+    date:'2026年 9月後出發',
+    hl:['下龍灣國賓號豪華日遊船','長安生態保護區竹筏','巴亭廣場・胡志明故居','電瓶車遊 36 古街','女皇跨海纜車','太陽之眼摩天輪','全程無購物'],
+    prices:[{r:'雙人房（每人）',p:'31,500 元'},{r:'單人房（每人）',p:'37,500 元'},{r:'小孩佔床（每人）',p:'31,500 元'},{r:'小孩不佔床（每人）',p:'29,500 元'}],
+    note:'16 人起成團；含簽證費、網卡、機場接送；長榮航空 桃園↔河內'
+  }
+];
 
-function cv(v,k){ return `var(--${v}-${k})`; }
+let selectedIntent = null, selectedTrip = null;
 
-function render(data){
-  document.getElementById('page').innerHTML = data.map((g,gi)=>{
-    const c = g.cv;
-    const cols = g.cards.length>=3?'c3':g.cards.length===2?'c2':'c1';
-    const multi = g.cards.length>1
-      ? `<span class="multi-badge" style="background:${cv(c,'l')};color:${cv(c,'h')}">${g.cards.length} 家可比較</span>`
-      : '';
-    const cardsHtml = g.cards.map((card,ci)=>{
-      const uid = `g${gi}c${ci}`;
-      const rows = DL.map((dl,di)=>{
-        const t = card.days[di]||'—';
-        const na = t==='—'||t==='N/A';
-        return `<div class="day-row">
-          <div class="day-lbl"><span class="day-pill" style="background:${na?'#f1f5f9':cv(c,'l')};color:${na?'#9ca3af':cv(c,'h')}">${dl}</span></div>
-          <div class="day-txt${na?' na':''}">${na?'此行程不含此天':t}</div>
-        </div>`;
-      }).join('');
-      return `<div class="card" id="${uid}" data-price="${card.price.replace(/,/g,'')}">
-        <div class="card-strip" style="background:${cv(c,'acc')}"></div>
-        <div class="card-top" onclick="selectCardById('${uid}')">
-          <div>
-            <div><span class="agency-badge ${card.badge}">${card.agency}</span></div>
-            <div class="trip-name">${card.name}</div>
-            ${card.sub?`<div class="trip-sub" style="color:${cv(c,'h')}">${card.sub}</div>`:''}
-            <div class="trip-meta">📅 ${card.date.replace(/\n/g,' · ')}<br>👥 最低出團 ${card.min}</div>
-          </div>
-          <div>
-            <div class="price-num" style="color:${cv(c,'h')}">NT$ ${card.price}</div>
-            <div class="price-sub">${card.pn.replace(/\n/g,'<br>')}</div>
-          </div>
-        </div>
-        <div class="toggle-row" onclick="tog('${uid}')">
-          <span class="arrow">⌄</span><span>展開 D1–D5 行程</span>
-        </div>
-        <div class="itin">${rows}</div>
-      </div>`;
-    }).join('');
-    return `<div class="dest-group" data-country="${g.country}" data-agencies="${g.cards.map(x=>x.agency).join(',')}">
-      <div class="dest-header">
-        <span class="dest-flag">${g.flag}</span>
-        <span class="dest-name" style="color:${cv(c,'h')}">${g.country}</span>
-        <span class="dest-region">· ${g.region}</span>${multi}
-      </div>
-      <div class="card-grid ${cols}">${cardsHtml}</div>
-    </div>`;
-  }).join('');
-}
-
-render(G);
-
-function tog(id){ document.getElementById(id).classList.toggle('open'); }
-
-let fA='all', fC='all', fP='all';
-function flt(type,val,btn){
-  const bar = btn.closest('.filter-bar');
-  [...bar.querySelectorAll('.chip')].filter(c=>(c.getAttribute('onclick')||'').includes(`'${type}'`)).forEach(c=>c.classList.remove('on'));
-  btn.classList.add('on');
-  if(type==='a') fA=val;
-  else if(type==='c') fC=val;
-  else fP=val;
-
-  document.querySelectorAll('.dest-group').forEach(g=>{
-    const mc = fC==='all'||g.dataset.country===fC;
-    const ma = fA==='all'||g.dataset.agencies.includes(fA);
-
-    // For price: show group if at least one card inside matches
-    let mp = true;
-    if(fP !== 'all'){
-      const [lo,hi] = fP.split('-').map(Number);
-      const cards = g.querySelectorAll('.card');
-      let anyMatch = false;
-      cards.forEach(card => {
-        const p = parseInt(card.dataset.price)||0;
-        if(p >= lo && p <= hi){ card.style.opacity='1'; card.style.pointerEvents=''; anyMatch=true; }
-        else { card.style.opacity='0.25'; card.style.pointerEvents='none'; }
-      });
-      mp = anyMatch;
-    } else {
-      g.querySelectorAll('.card').forEach(card => { card.style.opacity='1'; card.style.pointerEvents=''; });
-    }
-
-    g.style.display = (mc && ma && mp) ? '' : 'none';
-  });
-}
-
-// patch render call
-document.addEventListener('DOMContentLoaded', () => {
-  injectSelectUI();
-  updatePanel();
-});
-
-
-
-// ════════════════════════════════════════════════
-//  ▼▼▼  請將你的 Google Apps Script 網址貼在這裡  ▼▼▼
-// ════════════════════════════════════════════════
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbyfROWg9lyKdIMvFUPQGi1BJxGrpWaI9Hza_YQ2zc4y0IzDTvB5v7ziBixYZd2WDP_N/exec';
-// ════════════════════════════════════════════════
-
-// 國內外 tag 判斷
-const DOM_COUNTRIES = ['台灣'];
-function isDom(country){ return DOM_COUNTRIES.includes(country); }
-
-let selDom = null; // { uid, name, agency, country }
-let selOvs = null;
-
-function getCardMeta(cardEl) {
-  const group = cardEl.closest('.dest-group');
-  const country = group ? group.dataset.country : '';
-  const nameEl = cardEl.querySelector('.trip-name');
-  const agencyEl = cardEl.querySelector('.agency-badge');
-  const name = nameEl ? nameEl.textContent.trim() : '';
-  const agency = agencyEl ? agencyEl.textContent.trim() : '';
-  return { country, name, agency };
-}
-
-// Inject select UI into each card after render
-function injectSelectUI() {
-  document.querySelectorAll('.card').forEach(card => {
-    if (card.querySelector('.sel-check')) return; // already injected
-    const group = card.closest('.dest-group');
-    const country = group ? group.dataset.country : '';
-    const dom = isDom(country);
-    const color = '#d97706';
-    const cls   = dom ? 'dom-chk' : 'ovs-chk';
-    const hint  = dom ? '點擊選為【國內行程】' : '點擊選為【國外行程】';
-
-    // check badge
-    const chk = document.createElement('div');
-    chk.className = `sel-check ${cls}`;
-    chk.style.background = color;
-    chk.innerHTML = '✓';
-    card.appendChild(chk);
-
-    // hint bar
-    const hintEl = document.createElement('div');
-    hintEl.className = 'card-select-hint';
-    hintEl.style.background = '#fffbeb';
-    hintEl.style.color = '#d97706';
-    hintEl.textContent = hint;
-    card.appendChild(hintEl);
-
-    // Selection is handled via onclick="selectCardById(uid)" on card-top
-  });
-}
-
-
-function selectCardById(uid) {
-  const card = document.getElementById(uid);
-  if (!card) return;
-  const group = card.closest('.dest-group');
-  const country = group ? group.dataset.country : '';
-  const dom = isDom(country);
-  selectCard(card, dom);
-}
-
-function selectCard(card, dom) {
-  const uid = card.id;
-  const meta = getCardMeta(card);
-
-  if (dom) {
-    // deselect previous dom
-    if (selDom && selDom.uid !== uid) {
-      const prev = document.getElementById(selDom.uid);
-      if (prev) prev.classList.remove('sel-dom');
-    }
-    if (selDom && selDom.uid === uid) {
-      // toggle off
-      card.classList.remove('sel-dom');
-      selDom = null;
-    } else {
-      card.classList.add('sel-dom');
-      selDom = { uid, ...meta };
-    }
+function setIntent(val) {
+  selectedIntent = val;
+  document.getElementById('btn-no').className = 'intent-btn' + (val==='no' ? ' sel-no' : '');
+  document.getElementById('btn-yes').className = 'intent-btn' + (val==='yes' ? ' sel-yes' : '');
+  const ta = document.getElementById('trip-area');
+  if (val === 'yes') {
+    ta.classList.add('show');
+    setTimeout(() => ta.scrollIntoView({behavior:'smooth', block:'start'}), 80);
   } else {
-    if (selOvs && selOvs.uid !== uid) {
-      const prev = document.getElementById(selOvs.uid);
-      if (prev) prev.classList.remove('sel-ovs');
-    }
-    if (selOvs && selOvs.uid === uid) {
-      card.classList.remove('sel-ovs');
-      selOvs = null;
-    } else {
-      card.classList.add('sel-ovs');
-      selOvs = { uid, ...meta };
-    }
+    ta.classList.remove('show');
+    selectedTrip = null;
+    document.querySelectorAll('.trip-card').forEach(c => c.classList.remove('selected'));
   }
-  updatePanel();
 }
 
-function updatePanel() {
-  const tagsEl = document.getElementById('selTags');
-  const btn = document.getElementById('openFormBtn');
-  let html = '';
-
-  if (selDom) {
-    html += `<span class="sel-tag dom-tag">🇹🇼 ${selDom.name}（${selDom.agency}）<span class="rm" onclick="clearSel('dom')">✕</span></span>`;
-  }
-  if (selOvs) {
-    html += `<span class="sel-tag ovs-tag">✈️ ${selOvs.name}（${selOvs.agency}）<span class="rm" onclick="clearSel('ovs')">✕</span></span>`;
-  }
-  if (!selDom && !selOvs) {
-    html = '<span class="no-sel">尚未勾選任何行程（可各選 1 個國內＋1 個國外）</span>';
-  }
-
-  tagsEl.innerHTML = html;
-  btn.disabled = (!selDom && !selOvs);
+function selectTrip(id) {
+  selectedTrip = id;
+  document.querySelectorAll('.trip-card').forEach(c => c.classList.toggle('selected', c.dataset.id === id));
 }
 
-function clearSel(type) {
-  if (type === 'dom' && selDom) {
-    const el = document.getElementById(selDom.uid);
-    if (el) el.classList.remove('sel-dom');
-    selDom = null;
+function buildCard(t) {
+  return `<div class="trip-card" data-id="${t.id}" onclick="selectTrip('${t.id}')">
+    <div class="tc-head">
+      <div class="check-box">✓</div>
+      <div class="tc-title">${t.title}</div>
+      <span class="tc-duration">${t.duration}</span>
+    </div>
+    <div class="sel-badge">✅ 已選擇此行程</div>
+    <div class="tc-body">
+      <div class="tc-date">📅 出發時間：${t.date}</div>
+      <div class="info-chips">${t.hl.map(h=>`<span class="chip">${h}</span>`).join('')}</div>
+      <div class="price-row">${t.prices.map(p=>`<div class="price-box"><div class="pr-lbl">${p.r}</div><div class="pr-val">${p.p}</div></div>`).join('')}</div>
+      <div class="notice">📌 ${t.note}</div>
+    </div>
+  </div>`;
+}
+
+document.getElementById('dom-trips').innerHTML = DOM_TRIPS.map(buildCard).join('');
+document.getElementById('int-trips').innerHTML = INT_TRIPS.map(buildCard).join('');
+
+function findTrip(id){ return [...DOM_TRIPS,...INT_TRIPS].find(t=>t.id===id); }
+
+function trySubmit() {
+  const name = document.getElementById('f-name').value.trim();
+  const dept = document.getElementById('f-dept').value;
+  if (!name) { alert('請填寫您的姓名！'); return; }
+  if (!dept) { alert('請選擇您的部門！'); return; }
+  const countVal = document.getElementById('f-count').value;
+  if (countVal === '' || countVal === null) { alert('請填寫預計同行人數（僅本人參加請填 0）！'); return; }
+  if (!selectedIntent) { alert('請選擇您的參加意願！'); return; }
+  if (selectedIntent === 'yes' && !selectedTrip) { alert('請選擇您想參加的行程！'); return; }
+
+  const mi = document.getElementById('m-icon');
+  const mt = document.getElementById('m-title');
+  const mb = document.getElementById('m-body');
+  const mc = document.getElementById('m-choice');
+
+  if (selectedIntent === 'no') {
+    mi.textContent = '🙏';
+    mt.textContent = '請確認您的調查回覆';
+    mb.textContent = '您即將送出以下選擇，請確認是否正確：';
+    mc.innerHTML = `<div class="mc-type">您的選擇</div><div class="mc-main">❌ 無參加意願，希望延至 2027 年舉行</div>`;
+  } else {
+    const t = findTrip(selectedTrip);
+    const type = selectedTrip.startsWith('d') ? '🏝️ 國內行程' : '✈️ 國外行程';
+    mi.textContent = '🎉';
+    mt.textContent = '請確認您的調查回覆';
+    mb.textContent = '您即將送出以下選擇，請確認是否正確：';
+    mc.innerHTML = `<div class="mc-type">${type}</div><div class="mc-main">${t.title}</div>`;
   }
-  if (type === 'ovs' && selOvs) {
-    const el = document.getElementById(selOvs.uid);
-    if (el) el.classList.remove('sel-ovs');
-    selOvs = null;
-  }
-  updatePanel();
+  document.getElementById('modal').classList.add('show');
 }
 
-function openModal() {
-  // update summary in modal
-  let sum = '';
-  if (selDom) sum += `<p>🇹🇼 <strong>國內：</strong>${selDom.name}（${selDom.agency}）</p>`;
-  if (selOvs) sum += `<p>✈️ <strong>國外：</strong>${selOvs.name}（${selOvs.agency}）</p>`;
-  if (!sum) sum = '<p style="color:#9ca3af">尚未選擇行程</p>';
-  document.getElementById('modalSummary').innerHTML = sum;
-  document.getElementById('modalOverlay').classList.remove('hidden');
-}
+function closeModal() { document.getElementById('modal').classList.remove('show'); }
 
-function closeModal() {
-  document.getElementById('modalOverlay').classList.add('hidden');
-}
-
-function closeSuccess() {
-  document.getElementById('successOverlay').classList.add('hidden');
-  // reset selections
-  clearSel('dom'); clearSel('ovs');
-  // reset form
-  ['fName','fDept','fCount','fPhone','fNote'].forEach(id => {
-    document.getElementById(id).value = '';
-  });
-}
-
-// ── 暫存表單資料，等確認後再送 ──
-let _pendingPayload = null;
-
-function submitForm() {
-  const name  = document.getElementById('fName').value.trim();
-  const dept  = document.getElementById('fDept').value.trim();
-  const count = document.getElementById('fCount').value.trim();
-  const phone = document.getElementById('fPhone').value.trim();
-  const note  = document.getElementById('fNote').value.trim();
-
-  if (!name)  { alert('請填寫姓名'); return; }
-  if (!dept)  { alert('請填寫部門'); return; }
-  if (!count) { alert('請填寫參加人數'); return; }
-
-  const domTrip = selDom ? `${selDom.name}（${selDom.agency}）` : '未選擇';
-  const ovsTrip = selOvs ? `${selOvs.name}（${selOvs.agency}）` : '未選擇';
-
-  _pendingPayload = { name, dept, count, phone, note, domTrip, ovsTrip,
-                      timestamp: new Date().toLocaleString('zh-TW') };
-
-  // 填入確認彈窗內容
-  document.getElementById('confirmDom').textContent  = domTrip;
-  document.getElementById('confirmOvs').textContent  = ovsTrip;
-  document.getElementById('confirmPerson').innerHTML =
-    `姓名：<span>${name}</span>　部門：<span>${dept}</span>　` +
-    `人數：<span>${count} 人</span>` +
-    (phone ? `　電話：<span>${phone}</span>` : '') +
-    (note  ? `<br>備註：<span>${note}</span>` : '');
-
-  // 關閉表單Modal，開啟確認Modal
+function confirmSubmit() {
   closeModal();
-  document.getElementById('confirmOverlay').classList.remove('hidden');
-}
+  const name = document.getElementById('f-name').value.trim();
+  const dept = document.getElementById('f-dept').value;
+  const count = document.getElementById('f-count').value || '0';
+  const remark = document.getElementById('f-remark').value.trim();
 
-function closeConfirm() {
-  document.getElementById('confirmOverlay').classList.add('hidden');
-  // 重新打開表單Modal
-  document.getElementById('modalOverlay').classList.remove('hidden');
-}
-
-async function doSubmit() {
-  if (!_pendingPayload) return;
-
-  const okBtn = document.getElementById('confirmOkBtn');
-  okBtn.disabled = true;
-  okBtn.textContent = '送出中…';
-
-  try {
-    await fetch(GAS_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(_pendingPayload)
-    });
-    document.getElementById('confirmOverlay').classList.add('hidden');
-    document.getElementById('successMsg').innerHTML =
-      `<strong>${_pendingPayload.name}</strong> 的意願已記錄！<br>主管統計後將通知結果，謝謝。`;
-    document.getElementById('successOverlay').classList.remove('hidden');
-    _pendingPayload = null;
-  } catch(e) {
-    alert('送出失敗，請稍後再試或聯絡主辦人員。');
-  } finally {
-    okBtn.disabled = false;
-    okBtn.textContent = '確認送出 ✓';
+  let detail = `${name}（${dept}）已完成填寫。\n`;
+  if (selectedIntent === 'no') {
+    detail += '意願：無參加意願，希望延至 2027 年舉行。';
+  } else {
+    const t = findTrip(selectedTrip);
+    detail += `意願：有參加意願，選擇「${t.title}」。\n預計同行 ${count} 人（不含本人）。`;
   }
+  if (remark) detail += `\n備註：${remark}`;
+
+  document.getElementById('success-detail').textContent = detail;
+  document.getElementById('success-msg').style.display = 'block';
+  document.querySelector('.submit-btn').disabled = true;
+  document.querySelector('.submit-btn').textContent = '✅ 已送出';
+  document.getElementById('success-msg').scrollIntoView({behavior:'smooth'});
 }
-
-// Override render to inject select UI after each render
-const _origRender = render;
-function renderWithSelect(data) {
-  _origRender(data);
-  injectSelectUI();
-}
-
-// Re-route tog to only expand when toggle-row is clicked (not full card-top)
-// Already handled in injectSelectUI; tog still works for itin toggle
-
 </script>
 </body>
 </html>
